@@ -76,6 +76,7 @@ var on_text = function(data, property) {
             , loudness        : (value ? 'LOUD'            : '')
             , noise           : (value ? 'NOISY'           : '')
             , motion          : (value ? 'MOTION'          : '')
+            , occupied        : (value ? 'OCCUPIED'        : 'VACANT')
             , opened          : (value ? 'OPEN'            : 'CLOSED')
             , presence        : (value ? 'PRESENCE'        : '')
             , smoke_detected  : (value ? 'SMOKE DETECTED'  : '')
@@ -208,6 +209,7 @@ var style_element = function(data, property) {
             , loudness        : value && yellow
             , noise           : value && yellow
             , motion          : value && yellow
+            , occupied        : value && yellow
             , opened          : value && yellow
             , presence        : value && yellow
             , smoke_detected  : value && red
