@@ -753,22 +753,22 @@
         var indicatorElement = $('<div class="indicator-light"></div>');
         var currentSettings = settings;
         var isOn = false;
-        var onText;
-        var offText;
+        var onText = "ON";
+        var offText = "OFF";
+        var styleText = "";
+        var styleElement = null;
+        var lastElement = null;
 
         function updateState() {
-            indicatorElement.toggleClass("on", isOn);
+            if (!styleElement) indicatorElement.toggleClass("on", isOn);
 
-            if (isOn) {
-                stateElement.text((_.isUndefined(onText) ? (_.isUndefined(currentSettings.on_text) ? "" : currentSettings.on_text) : onText));
-            }
-            else {
-                stateElement.text((_.isUndefined(offText) ? (_.isUndefined(currentSettings.off_text) ? "" : currentSettings.off_text) : offText));
-            }
+            stateElement.text(isOn ? onText : offText);
         }
 
         this.render = function (element) {
-            $(element).append(titleElement).append(indicatorElement).append(stateElement);
+            if (!!element) lastElement = element; else element = lastElement;
+            $(element).empty();
+            $(element).append(titleElement).append(styleElement || indicatorElement).append(stateElement);
         }
 
         this.onSettingsChanged = function (newSettings) {
@@ -781,11 +781,18 @@
             if (settingName == "value") {
                 isOn = Boolean(newValue);
             }
-            if (settingName == "on_text") {
-                onText = newValue;
+            else if (settingName === "on_text") {
+                onText = newValue
             }
-            if (settingName == "off_text") {
-                offText = newValue;
+            else if (settingName === "off_text") {
+                offText = newValue
+            }
+            else if (settingName === "style_element") {
+                if (styleText != newValue) {
+                    styleText = newValue
+                    styleElement = (!!newValue) ? $(newValue) : null
+                    this.render()
+                }
             }
 
             updateState();
@@ -805,26 +812,31 @@
         type_name: "indicator",
         display_name: "Indicator Light",
         settings: [
-	        {
-	            name: "title",
-	            display_name: "Title",
-	            type: "text"
-	        },
-	        {
-	            name: "value",
-	            display_name: "Value",
-	            type: "calculated"
-	        },
-	        {
-	            name: "on_text",
-	            display_name: "On Text",
-	            type: "calculated"
-	        },
-	        {
-	            name: "off_text",
-	            display_name: "Off Text",
-	            type: "calculated"
-	        }
+            {
+                name: "title",
+                display_name: "Title",
+                type: "text"
+            },
+            {
+                name: "value",
+                display_name: "Value",
+                type: "calculated"
+            },
+            {
+                name: "on_text",
+                display_name: "On Text",
+                type: "calculated"
+            },
+            {
+                name: "off_text",
+                display_name: "Off Text",
+                type: "calculated"
+            },
+            {
+                name: "style_element",
+                display_name: "Style Element",
+                type: "calculated"
+            }
         ],
         newInstance: function (settings, newInstanceCallback) {
             newInstanceCallback(new indicatorWidget(settings));
