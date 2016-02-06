@@ -83,8 +83,6 @@ function WidgetModel(theFreeboardModel, widgetPlugins) {
 				returnValue = self.callValueFunction(self.calculatedSettingScripts[settingName]);
 			}
 			catch (e) {
-				console.log(e.toString());
-
 				var rawValue = self.settings()[settingName];
 
 				// If there is a reference error and the value just contains letters and numbers, then
