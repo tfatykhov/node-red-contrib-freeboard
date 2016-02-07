@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('../fonts/icomoon.eot?ey5eaj');
-    src:    url('../fonts/icomoon.eot?ey5eaj#iefix') format('embedded-opentype'),
-        url('../fonts/icomoon.ttf?ey5eaj') format('truetype'),
-        url('../fonts/icomoon.woff?ey5eaj') format('woff'),
-        url('../fonts/icomoon.svg?ey5eaj#icomoon') format('svg');
+    src:    url('../fonts/icomoon.eot?jr6g2k');
+    src:    url('../fonts/icomoon.eot?jr6g2k#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?jr6g2k') format('truetype'),
+        url('../fonts/icomoon.woff?jr6g2k') format('woff'),
+        url('../fonts/icomoon.svg?jr6g2k#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.cicon-building_emtpy:before {
+    content: "\e90a";
+}
+.cicon-building_full:before {
+    content: "\e90b";
+}
+.cicon-garage_o:before {
+    content: "\e908";
+}
+.cicon-garage_c:before {
+    content: "\e909";
+}
 .cicon-propane_tnk_half:before {
     content: "\e907";
 }
