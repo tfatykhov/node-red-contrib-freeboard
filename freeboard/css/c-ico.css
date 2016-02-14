@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('../fonts/icomoon.eot?jr6g2k');
-    src:    url('../fonts/icomoon.eot?jr6g2k#iefix') format('embedded-opentype'),
-        url('../fonts/icomoon.ttf?jr6g2k') format('truetype'),
-        url('../fonts/icomoon.woff?jr6g2k') format('woff'),
-        url('../fonts/icomoon.svg?jr6g2k#icomoon') format('svg');
+    src:    url('../fonts/icomoon.eot?53jx77');
+    src:    url('../fonts/icomoon.eot?53jx77#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?53jx77') format('truetype'),
+        url('../fonts/icomoon.woff?53jx77') format('woff'),
+        url('../fonts/icomoon.svg?53jx77#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,6 +24,15 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.cicon-cabinet_door:before {
+    content: "\e91a";
+}
+.cicon-windows:before {
+    content: "\e918";
+}
+.cicon-windows2:before {
+    content: "\e919";
+}
 .cicon-building_emtpy:before {
     content: "\e90a";
 }
@@ -68,5 +77,50 @@
 }
 .cicon-propane_tnk:before {
     content: "\e905";
+}
+.cicon-building_emtpy2:before {
+    content: "\e90c";
+}
+.cicon-building_full2:before {
+    content: "\e90d";
+}
+.cicon-garage_o2:before {
+    content: "\e90e";
+}
+.cicon-garage_c2:before {
+    content: "\e915";
+}
+.cicon-propane_tnk_half2:before {
+    content: "\e914";
+}
+.cicon-propane_tnk_full2:before {
+    content: "\e913";
+}
+.cicon-doors42:before {
+    content: "\e912";
+}
+.cicon-closed_door2:before {
+    content: "\1f305";
+}
+.cicon-opened_door2:before {
+    content: "\1f304";
+}
+.cicon-CO22:before {
+    content: "\1f303";
+}
+.cicon-bulb2:before {
+    content: "\e911";
+}
+.cicon-droplet2:before {
+    content: "\e910";
+}
+.cicon-feed2:before {
+    content: "\e90f";
+}
+.cicon-fire2:before {
+    content: "\e916";
+}
+.cicon-propane_tnk2:before {
+    content: "\e917";
 }
 
