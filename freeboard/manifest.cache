@@ -1,0 +1,41 @@
+CACHE MANIFEST
+# Ver 29.00.23
+
+# Add the entire internet to the "white list" of sites that may be accessed by this site.
+# This is needed for TypeKit and Google Analytics
+
+NETWORK:
+/freeboard/*
+/red/camera_history
+lightcontrols
+lockcontrols
+cam_history
+mysummary
+*.jpg
+*
+
+# The following files are explicitly cached -
+CACHE:
+//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css
+bootstrap/css/bootstrap.min.css
+bootstrap/css/bootstrap-toggle.min.css
+font-awesome/css/font-awesome.min.css
+css/local.css
+css/animate.min.css
+css/freeboard.min.css
+js/freeboard.thirdparty.min.js
+assets/js/jquery.knob.min.js
+js/jquery-1.10.2.min.js
+js/jquery.noty.packaged.min.js
+bootstrap/js/bootstrap.min.js
+bootstrap/js/bootstrap-toggle.min.js
+js/eModalBl.min.js
+js/freeboard.js
+js/freeboard.plugins.min.js
+lib/js/thirdparty/wink.js
+plugins/thirdparty/jquery.sparkline.min.js
+assets/img/main_ico_02.png
+fonts/*
+fonts/glyphicons-halflings-regular.woff
+bootstrap/fonts/glyphicons-halflings-regular.woff2
+font-awesome/fonts/fontawesome-webfont.woff
