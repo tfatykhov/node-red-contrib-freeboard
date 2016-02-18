@@ -78,11 +78,10 @@ var on_text = function(data, property) {
             , motion          : (value ? 'MOTION'          : '')
             , occupied        : (value ? 'OCCUPIED'        : 'VACANT')
             , opened          : (value ? 'OPEN'            : 'CLOSED')
-            , presence        : (value ? 'PRESENCE'        : '')
             , smoke_detected  : (value ? 'SMOKE DETECTED'  : '')
             , tamper_detected : (value ? 'TAMPER DETECTED' : '')
             , vibration       : (value ? 'VIBRATION'       : '')
-            , presence        : (value ? 'HOME'		   : 'OUT')
+            , presence        : (value ? 'HOME'		   : 'NO')
 
             , battery         : pct(value)
             , brightness      : pct(value)
