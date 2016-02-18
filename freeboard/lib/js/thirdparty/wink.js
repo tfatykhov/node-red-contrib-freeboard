@@ -82,6 +82,7 @@ var on_text = function(data, property) {
             , smoke_detected  : (value ? 'SMOKE DETECTED'  : '')
             , tamper_detected : (value ? 'TAMPER DETECTED' : '')
             , vibration       : (value ? 'VIBRATION'       : '')
+            , presence        : (value ? 'HOME'		   : 'OUT')
 
             , battery         : pct(value)
             , brightness      : pct(value)
