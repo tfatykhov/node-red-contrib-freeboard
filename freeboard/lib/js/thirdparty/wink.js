@@ -104,8 +104,9 @@ var on_text = function(data, property) {
     return text
 }
 
-var uv_index = function (value){
+var uv_index = function (val){
     var result;
+    var value=parseInt(val);
     result = 'Minimal';
     if (value <=2) result='Minimal'
     else if (value <=4) result ='Low'
@@ -185,8 +186,9 @@ DynCol =function (hex, lum) {
 	return rgb;
 }
 
-var uv_index_col = function (value){
+var uv_index_col = function (val){
     var result;
+    var value=parseInt(val);
     result = '#40FF00';
     if (value <=4) result='#40FF00'
     else if (value <=7) result = '#FFFF00'
