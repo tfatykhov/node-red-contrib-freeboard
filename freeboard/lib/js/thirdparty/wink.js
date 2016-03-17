@@ -82,7 +82,7 @@ var on_text = function(data, property) {
             , tamper_detected : (value ? 'TAMPER DETECTED' : '')
             , vibration       : (value ? 'VIBRATION'       : '')
             , presence        : (value ? 'HOME'		   : 'NO')
-            , night           : (value ? 'NIGHT'       : 'DAY')
+            , timeframe       : (value ? 'NIGHT'       : 'DAY')
             , rain            : (value ? 'RAIN'        : 'NO RAIN')
             , pressure        : value+' mBar'
             , luminance       : value+' cd/m2'
@@ -183,7 +183,9 @@ var style_element = function(data, property) {
       , shape  = 'circle'
       , white  = '#ffffff'
       , yellow = '#eed202'
-
+      , day = '#FFBF00'
+      , rain = '#81DAF5'
+    
     if (!data) return ''
     if ((typeof data.connection !== 'undefined') && (!data.connection)) return { color: red, shape: 'triangle' }
 
@@ -219,7 +221,8 @@ var style_element = function(data, property) {
             , smoke_detected  : value && red
             , tamper_detected : value && red
             , vibration       : value && yellow
-            , rain            : value && yellow
+            , rain            : value && rain
+            , timeframe       : (value ? black : day)
 
             , battery         : (value ==  1.0 ? blue : value > 0.66 ? green : value > 0.33 ? yellow : red)
             , brightness      : false
