@@ -82,7 +82,11 @@ var on_text = function(data, property) {
             , tamper_detected : (value ? 'TAMPER DETECTED' : '')
             , vibration       : (value ? 'VIBRATION'       : '')
             , presence        : (value ? 'HOME'		   : 'NO')
-
+            , night           : (value ? 'NIGHT'       : 'DAY')
+            , rain            : (value ? 'RAIN'        : 'NO RAIN')
+            , pressure        : value+' mBar'
+            , luminance       : value+' cd/m2'
+            , uvindex         : value
             , battery         : pct(value)
             , brightness      : pct(value)
             , co_severity     : pct(value)
@@ -215,6 +219,7 @@ var style_element = function(data, property) {
             , smoke_detected  : value && red
             , tamper_detected : value && red
             , vibration       : value && yellow
+            , rain            : value && yellow
 
             , battery         : (value ==  1.0 ? blue : value > 0.66 ? green : value > 0.33 ? yellow : red)
             , brightness      : false
