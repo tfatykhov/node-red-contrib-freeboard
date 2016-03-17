@@ -8,6 +8,17 @@ var wink = { indicator: {} }
 
 // data, e.g., datasources["WinKData"]["light_bulb"]["Kitchen"]
 
+
+var uv_index = function (value){
+    var value=parseInt(value);
+    if (value <=2) return 'Minimal'
+    else if (value <=4) return 'Low'
+    else if (value <=6) return  'Moderate'
+    else if (value <=9) return 'High!'
+    else return 'Very High!!'
+}
+
+
 wink.indicator.value = function(data, property) {
     var value
 
@@ -104,17 +115,6 @@ var on_text = function(data, property) {
     return text
 }
 
-var uv_index = function (val){
-    var result;
-    var value=parseInt(val);
-    result = 'Minimal';
-    if (value <=2) result='Minimal'
-    else if (value <=4) result ='Low'
-    else if (value <=6) result = 'Moderate'
-    else if (value <=9) result = 'High!'
-    else result = 'Very High!!';
-    return result;
-}
 
 var pct = function(value) {
     return ((value > 1.0 ? value : value * 100).toFixed(0) + '%')
