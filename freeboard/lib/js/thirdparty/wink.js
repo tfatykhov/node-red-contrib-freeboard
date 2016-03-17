@@ -86,7 +86,7 @@ var on_text = function(data, property) {
             , rain            : (value ? 'RAIN'        : 'NO RAIN')
             , pressure        : value+' mBar'
             , luminance       : value+' cd/m2'
-            , uvindex         : value
+            , uvindex         : uv_index(value)
             , battery         : pct(value)
             , brightness      : pct(value)
             , co_severity     : pct(value)
@@ -103,7 +103,18 @@ var on_text = function(data, property) {
 
     return text
 }
-                                 
+
+var uv_index = function (value){
+    var result;
+    result = 'Minimal';
+    if (value <=2) result='Minimal'
+    else if (value <=4) result ='Low'
+    else if (value <=6) result = 'Moderate'
+    else if (value <=9) result = 'High!'
+    else result = 'Very High!!';
+    return result;
+}
+
 var pct = function(value) {
     return ((value > 1.0 ? value : value * 100).toFixed(0) + '%')
 }
@@ -174,6 +185,16 @@ DynCol =function (hex, lum) {
 	return rgb;
 }
 
+var uv_index_col = function (value){
+    var result;
+    result = '#40FF00';
+    if (value <=4) result='#40FF00'
+    else if (value <=7) result = '#FFFF00'
+    else if (value <=9) result = '#FF8000'
+    else result = '#FF0000'
+    return result;
+}
+
 var style_element = function(data, property) {
     var color, value
       , black  = '#000000'
@@ -223,6 +244,7 @@ var style_element = function(data, property) {
             , vibration       : value && yellow
             , rain            : value && rain
             , timeframe       : (value ? black : day)
+            , uvindex         : uv_index_col(value)
 
             , battery         : (value ==  1.0 ? blue : value > 0.66 ? green : value > 0.33 ? yellow : red)
             , brightness      : false
@@ -232,7 +254,7 @@ var style_element = function(data, property) {
 	    , mode	      : (value=='cool_only' ? blue : red)
             , temperature     : false
             }[property] || blue
-    if ((color != blue) && (color != green)) shape = 'triangle'
+//    if ((color != blue) && (color != green)) shape = 'triangle'
 
     return { color: color, shape: shape }
 }
