@@ -9,14 +9,6 @@ var wink = { indicator: {} }
 // data, e.g., datasources["WinKData"]["light_bulb"]["Kitchen"]
 
 
-var uv_index = function (value){
-    var value=parseInt(value);
-    if (value <=2) return 'Minimal'
-    else if (value <=4) return 'Low'
-    else if (value <=6) return  'Moderate'
-    else if (value <=9) return 'High!'
-    else return 'Very High!!'
-}
 
 
 wink.indicator.value = function(data, property) {
@@ -99,11 +91,11 @@ var on_text = function(data, property) {
             , luminance       : value+' cd/m2'
             , lat             : value
             , lon             : value
-            , accuracy        : value+' meters'
+            , accuracy        : value+ (value<=1 ? ' meter' :' meters')
             , lastWaypoint    : value
             , lastEvent       : value
              
-            , uvindex         : uv_index(value)
+            , uvindex         : (value <=2 ? 'Minimal' : value <=4 ? 'Low' : value<=6 ? 'Moderate' : value<=9 ? 'High!' : 'Very High!')
              
             , battery         : pct(value)
             , brightness      : pct(value)
@@ -120,7 +112,6 @@ var on_text = function(data, property) {
 
     return text
 }
-
 
 var pct = function(value) {
     return ((value > 1.0 ? value : value * 100).toFixed(0) + '%')
@@ -192,17 +183,6 @@ DynCol =function (hex, lum) {
 	return rgb;
 }
 
-var uv_index_col = function (val){
-    var result;
-    var value=parseInt(val);
-    result = '#40FF00';
-    if (value <=4) result='#40FF00'
-    else if (value <=7) result = '#FFFF00'
-    else if (value <=9) result = '#FF8000'
-    else result = '#FF0000'
-    return result;
-}
-
 var style_element = function(data, property) {
     var color, value
       , black  = '#000000'
@@ -214,6 +194,10 @@ var style_element = function(data, property) {
       , yellow = '#eed202'
       , day = '#FFBF00'
       , rain = '#81DAF5'
+      , normal = '#40FF00'
+      , moderate = '#FFFF00'
+      , warning = '#FF8000'
+      , danger = '#FF0000'
     
     if (!data) return ''
     if ((typeof data.connection !== 'undefined') && (!data.connection)) return { color: red, shape: 'triangle' }
@@ -252,19 +236,18 @@ var style_element = function(data, property) {
             , vibration       : value && yellow
             , rain            : value && rain
             , timeframe       : (value ? black : day)
-            , uvindex         : uv_index_col(value)
+            , uvindex         : (value <=4 ? normal : value <=7 ? moderate : value <= 9 ? warning : danger)
             , lat             : blue
             , lon             : blue
             , accuracy        : blue
             , lastWaypoint    : blue
             , lastEvent       : (value=='enter' ? yellow : blue)             
-
             , battery         : (value ==  1.0 ? blue : value > 0.66 ? green : value > 0.33 ? yellow : red)
             , brightness      : false
             , co_severity     : (value > 0) && red
             , humidity        : false
             , smoke_severity  : (value > 0) && red
-	    , mode	      : (value=='cool_only' ? blue : red)
+	        , mode	      : (value=='cool_only' ? blue : red)
             , temperature     : false
             }[property] || blue
 //    if ((color != blue) && (color != green)) shape = 'triangle'
