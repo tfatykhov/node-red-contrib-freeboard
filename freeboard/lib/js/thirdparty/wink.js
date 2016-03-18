@@ -97,7 +97,14 @@ var on_text = function(data, property) {
             , rain            : (value ? 'RAIN'        : 'NO RAIN')
             , pressure        : value+' mBar'
             , luminance       : value+' cd/m2'
+            , lat             : value
+            , lon             : value
+            , accuracy        : value+' meters'
+            , lastWaypoint    : value
+            , lastEvent       : value
+             
             , uvindex         : uv_index(value)
+             
             , battery         : pct(value)
             , brightness      : pct(value)
             , co_severity     : pct(value)
@@ -106,8 +113,7 @@ var on_text = function(data, property) {
 
             , remaining       : pct(value)
             , temperature     : dual_temp(value)
-//            , mode            : (value ==  'cool_only' ? 'Cool' : value == 'heat_only' ? 'Heat' : 'Auto')
-	    , mode	      : tstat_mode(data,value)
+            , mode	      : tstat_mode(data,value)
 
             }[property]
     if (text === '') text = 'OK'
@@ -247,6 +253,11 @@ var style_element = function(data, property) {
             , rain            : value && rain
             , timeframe       : (value ? black : day)
             , uvindex         : uv_index_col(value)
+            , lat             : blue
+            , lon             : blue
+            , accuracy        : blue
+            , lastWaypoint    : blue
+            , lastEvent       : (value=='enter' ? yellow : blue)             
 
             , battery         : (value ==  1.0 ? blue : value > 0.66 ? green : value > 0.33 ? yellow : red)
             , brightness      : false
