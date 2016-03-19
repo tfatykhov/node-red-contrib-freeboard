@@ -94,6 +94,7 @@ var on_text = function(data, property) {
             , accuracy        : value+ (value<=1 ? ' meter' :' meters')
             , lastWaypoint    : value
             , lastEvent       : value
+            , distanceFromHome: value
              
             , uvindex         : (value <=2 ? 'Minimal' : value <=4 ? 'Low' : value<=6 ? 'Moderate' : value<=9 ? 'High!' : 'Very High!')
              
@@ -240,6 +241,7 @@ var style_element = function(data, property) {
             , lat             : blue
             , lon             : blue
             , accuracy        : blue
+            , distanceFromHome: blue
             , lastWaypoint    : blue
             , lastEvent       : (value=='enter' ? yellow : blue)             
             , battery         : (value ==  1.0 ? blue : value > 0.66 ? green : value > 0.33 ? yellow : red)
