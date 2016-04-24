@@ -95,8 +95,9 @@ var on_text = function(data, property) {
             , lastWaypoint    : value
             , lastEvent       : value
             , distanceFromHome: value
-             
-            , uvindex         : (value <=2 ? 'Minimal' : value <=4 ? 'Low' : value<=6 ? 'Moderate' : value<=9 ? 'High!' : 'Very High!')
+            , trigger         : geo_trigger(value)
+            , lastUpdated     : timeConverter(value);
+            , uvindex         : value+' '+(value <=2 ? 'Minimal' : value <=4 ? 'Low' : value<=6 ? 'Moderate' : value<=9 ? 'High!' : 'Very High!')
              
             , battery         : pct(value)
             , brightness      : pct(value)
@@ -112,6 +113,32 @@ var on_text = function(data, property) {
     if (text === '') text = 'OK'
 
     return text
+}
+
+var timeConverter = function (UNIX_timestamp){
+  var a = new Date(UNIX_timestamp * 1000);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var year = a.getFullYear();
+  var month = months[a.getMonth()];
+  var date = a.getDate();
+  var hour = a.getHours();
+  var min = a.getMinutes();
+  var sec = a.getSeconds();
+  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
+  return time;
+}
+var geo_trigger = function(value){
+    var text;
+    text={
+        p : 'ping',
+        c : 'gps geofence',
+        b : 'beacon geofence',
+        r : 'remote request',
+        u : 'manual publish',
+        t : 'moving publish',
+        a : 'auto update'    
+    }[value]
+    return text;
 }
 
 var pct = function(value) {
