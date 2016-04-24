@@ -96,7 +96,7 @@ var on_text = function(data, property) {
             , lastEvent       : value
             , distanceFromHome: value
             , trigger         : geo_trigger(value)
-            , lastUpdated     : timeConverter(value);
+            , lastUpdated     : timeConverter(value)
             , uvindex         : value+' '+(value <=2 ? 'Minimal' : value <=4 ? 'Low' : value<=6 ? 'Moderate' : value<=9 ? 'High!' : 'Very High!')
              
             , battery         : pct(value)
