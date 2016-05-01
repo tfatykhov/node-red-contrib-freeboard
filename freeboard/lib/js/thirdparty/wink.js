@@ -97,14 +97,12 @@ var on_text = function(data, property) {
             , distanceFromHome: value
             , trigger         : geo_trigger(value)
             , lastUpdated     : timeConverter(value)
-            , uvindex         : value+' '+(value <=2 ? 'Minimal' : value <=4 ? 'Low' : value<=6 ? 'Moderate' : value<=9 ? 'High!' : 'Very High!')
-             
+            , uvindex         : getUvIndex(value)
             , battery         : pct(value)
             , brightness      : pct(value)
             , co_severity     : pct(value)
             , humidity        : pct(value)
             , smoke_severity  : pct(value)
-
             , remaining       : pct(value)
             , temperature     : dual_temp(value)
             , mode	      : tstat_mode(data,value)
@@ -124,11 +122,19 @@ var timeConverter = function (UNIX_timestamp){
   var hour = a.getHours();
   var min = a.getMinutes();
   var sec = a.getSeconds();
-  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
+  var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + (min<10 ? '0'+min : min);
   return time;
 }
+
+var getUvIndex = function(val){
+    var value;
+    value=parseInt(val)
+    return value+' '+(value <=2 ? 'Minimal' : value <=4 ? 'Low' : value<=6 ? 'Moderate' : value<=9 ? 'High!' : 'Very High!');
+}
+
 var geo_trigger = function(value){
     var text;
+    text='';
     text={
         p : 'ping',
         c : 'gps geofence',
@@ -138,7 +144,7 @@ var geo_trigger = function(value){
         t : 'moving publish',
         a : 'auto update'    
     }[value]
-    return text;
+    return (text === '' ? 'auto update' : text);
 }
 
 var pct = function(value) {
