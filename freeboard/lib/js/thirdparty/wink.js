@@ -128,7 +128,7 @@ var timeConverter = function (UNIX_timestamp){
 
 var getUvIndex = function(val){
     var value;
-    value=parseInt(val)
+    value=parseInt(val);
     return value+' '+(value <=2 ? 'Minimal' : value <=4 ? 'Low' : value<=6 ? 'Moderate' : value<=9 ? 'High!' : 'Very High!');
 }
 
@@ -142,7 +142,8 @@ var geo_trigger = function(value){
         r : 'remote request',
         u : 'manual publish',
         t : 'moving publish',
-        a : 'auto update'    
+        a : 'auto update',
+        none: 'auto update'
     }[value]
     return (text === '' ? 'auto update' : text);
 }
