@@ -63,6 +63,7 @@ var on_text = function(data, property) {
             , linked_services : 'OK'
             , light_bulbs     : (data.brightness == 1.0  ? ''     : pct(data.brightness))
             , locks           : 'LOCKED'
+            , valves          : 'OPEN'
             , sensor_pods     : 'PROPERTY?'
             , shades          : (data.position == 1.0    ? 'OPEN' : pct(data.position))
             , smoke_detectors : 'OK'
@@ -180,6 +181,7 @@ var off_text = function(data, property) {
     return { buttons          : 'IDLE'
            , garage_doors     : (data.position !== null ? 'CLOSED' : 'UNKNOWN' )
            , locks            : 'UNLOCKED'
+           , valves           : 'CLOSED'
            , shades           : (data.position !== null ? 'CLOSED' : 'UNKNOWN' )
            }[data.object_type] || 'OFF'
 }
