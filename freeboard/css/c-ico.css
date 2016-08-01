@@ -1,126 +1,81 @@
 @font-face {
-    font-family: 'icomoon';
-    src:    url('../fonts/icomoon.eot?53jx77');
-    src:    url('../fonts/icomoon.eot?53jx77#iefix') format('embedded-opentype'),
-        url('../fonts/icomoon.ttf?53jx77') format('truetype'),
-        url('../fonts/icomoon.woff?53jx77') format('woff'),
-        url('../fonts/icomoon.svg?53jx77#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?bbnd4a');
+  src:  url('../fonts/icomoon.eot?bbnd4a#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?bbnd4a') format('truetype'),
+    url('../fonts/icomoon.woff?bbnd4a') format('woff'),
+    url('../fonts/icomoon.svg?bbnd4a#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 
 [class^="cicon-"], [class*=" cicon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'icomoon' !important;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
 
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+.cicon-valve:before {
+  content: "\e900";
+}
 .cicon-cabinet_door:before {
-    content: "\e91a";
+  content: "\e91b";
 }
 .cicon-windows:before {
-    content: "\e918";
+  content: "\e91a";
 }
 .cicon-windows2:before {
-    content: "\e919";
+  content: "\e919";
 }
 .cicon-building_emtpy:before {
-    content: "\e90a";
+  content: "\e90a";
 }
 .cicon-building_full:before {
-    content: "\e90b";
+  content: "\e90b";
 }
 .cicon-garage_o:before {
-    content: "\e908";
+  content: "\e908";
 }
 .cicon-garage_c:before {
-    content: "\e909";
+  content: "\e909";
 }
 .cicon-propane_tnk_half:before {
-    content: "\e907";
+  content: "\e907";
 }
 .cicon-propane_tnk_full:before {
-    content: "\e906";
+  content: "\e906";
 }
 .cicon-doors4:before {
-    content: "\e904";
+  content: "\e905";
 }
 .cicon-closed_door:before {
-    content: "\1f301";
+  content: "\1f301";
 }
 .cicon-opened_door:before {
-    content: "\1f300";
+  content: "\1f300";
 }
 .cicon-CO2:before {
-    content: "\1f302";
+  content: "\1f302";
 }
 .cicon-bulb:before {
-    content: "\e903";
+  content: "\e903";
 }
 .cicon-droplet:before {
-    content: "\e900";
+  content: "\e904";
 }
 .cicon-feed:before {
-    content: "\e901";
+  content: "\e901";
 }
 .cicon-fire:before {
-    content: "\e902";
-}
-.cicon-propane_tnk:before {
-    content: "\e905";
-}
-.cicon-building_emtpy2:before {
-    content: "\e90c";
-}
-.cicon-building_full2:before {
-    content: "\e90d";
-}
-.cicon-garage_o2:before {
-    content: "\e90e";
-}
-.cicon-garage_c2:before {
-    content: "\e915";
-}
-.cicon-propane_tnk_half2:before {
-    content: "\e914";
-}
-.cicon-propane_tnk_full2:before {
-    content: "\e913";
-}
-.cicon-doors42:before {
-    content: "\e912";
-}
-.cicon-closed_door2:before {
-    content: "\1f305";
-}
-.cicon-opened_door2:before {
-    content: "\1f304";
-}
-.cicon-CO22:before {
-    content: "\1f303";
-}
-.cicon-bulb2:before {
-    content: "\e911";
-}
-.cicon-droplet2:before {
-    content: "\e910";
-}
-.cicon-feed2:before {
-    content: "\e90f";
-}
-.cicon-fire2:before {
-    content: "\e916";
-}
-.cicon-propane_tnk2:before {
-    content: "\e917";
+  content: "\e902";
 }
 
