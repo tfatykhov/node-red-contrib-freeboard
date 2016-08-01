@@ -33,6 +33,7 @@ wink.indicator.value = function(data, property) {
             , linked_services : true
             , light_bulbs     : data.powered
             , locks           : data.locked
+            , valves          : data.opened
             , sensor_pods     : true
             , shades          : data.position > 0
             , smoke_detectors : true
@@ -245,6 +246,7 @@ var style_element = function(data, property) {
             , hubs            : (!data.update_needed   ? blue  : yellow)
             , light_bulbs     : (data.powered          ? DynCol("#905030",data.brightness*5) : black)
             , locks           : (data.locked           ? blue  : yellow)
+            , valves          : (data.opened           ? blue :  yellow)
             , shades          : (data.position === 0.0 ? blue  : data.position === null ? yellow : green)
             , thermostats     : ({ cool_only: blue, heat_only: red }[data.mode] || green)
             , air_conditioners: (data.powered ? blue : green)
