@@ -91,6 +91,7 @@ var on_text = function(data, property) {
             , rain            : (value ? 'RAIN'        : 'NO RAIN')
             , pressure        : value+' mBar'
             , luminance       : value+' cd/m2'
+            , illuminance     : value+' lux'
             , lat             : value
             , lon             : value
             , accuracy        : value+ (value<=1 ? ' meter' :' meters')
@@ -275,6 +276,7 @@ var style_element = function(data, property) {
             , vibration       : value && yellow
             , rain            : value && rain
             , timeframe       : (value ? black : day)
+            , illuminance     : (value <=10 ? black : value <=50 ? yellow : white)
             , uvindex         : (value <=4 ? normal : value <=7 ? moderate : value <= 9 ? warning : danger)
             , lat             : blue
             , lon             : blue
