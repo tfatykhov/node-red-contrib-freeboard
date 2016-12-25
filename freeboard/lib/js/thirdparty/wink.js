@@ -247,7 +247,7 @@ var style_element = function(data, property) {
             , buttons         : (!data.pressed         ? blue  : green)
             , garage_doors    : (data.position === 0.0 ? blue  : yellow)
             , hubs            : (!data.update_needed   ? blue  : yellow)
-            , light_bulbs     : (data.powered          ? DynCol("#905030",data.brightness*5) : black)
+            , light_bulbs     : (data.powered          ? ('hexColor' in data ? data.hexColor : DynCol("#905030",data.brightness*5)) : black)
             , locks           : (data.locked           ? blue  : yellow)
             , valves          : (data.opened           ? blue :  yellow)
             , shades          : (data.position === 0.0 ? blue  : data.position === null ? yellow : green)
