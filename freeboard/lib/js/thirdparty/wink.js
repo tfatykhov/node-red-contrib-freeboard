@@ -89,6 +89,7 @@ var on_text = function(data, property) {
             , presence        : (value ? 'HOME'		   : 'NO')
             , timeframe       : (value ? 'NIGHT'       : 'DAY')
             , rain            : (value ? 'RAIN'        : 'NO RAIN')
+            , Playing         : (value ? 'Playing video':'Idle')
             , pressure        : value+' mBar'
             , luminance       : value+' cd/m2'
             , illuminance     : value+' lux'
@@ -275,6 +276,7 @@ var style_element = function(data, property) {
             , tamper_detected : value && red
             , vibration       : value && yellow
             , rain            : value && rain
+            , Playing         : (value ? green : blue)
             , timeframe       : (value ? black : day)
             , illuminance     : (value <=10 ? black : value <=50 ? yellow : white)
             , uvindex         : (value <=4 ? normal : value <=7 ? moderate : value <= 9 ? warning : danger)
