@@ -102,6 +102,10 @@ var on_text = function(data, property) {
             , trigger         : geo_trigger(value)
             , lastUpdated     : timeConverter(value)
             , uvindex         : getUvIndex(value)
+            , windDirection   : value
+            , windGust        : value
+            , sustainedWindSpeed: value
+            , rainRate        : value 
             , battery         : pct(value)
             , brightness      : pct(value)
             , co_severity     : pct(value)
@@ -279,7 +283,7 @@ var style_element = function(data, property) {
             , Playing         : (value ? green : blue)
             , timeframe       : (value ? black : day)
             , illuminance     : (value <=10 ? black : value <=50 ? yellow : white)
-            , uvindex         : (value <=4 ? normal : value <=7 ? moderate : value <= 9 ? warning : danger)
+            , uvindex         : (parseInt(value) <=4 ? normal : parseInt(value) <=7 ? moderate : parseInt(value) <= 9 ? warning : danger)
             , lat             : blue
             , lon             : blue
             , accuracy        : blue
