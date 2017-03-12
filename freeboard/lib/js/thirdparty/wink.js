@@ -149,6 +149,7 @@ var getUvIndex = function(val){
         txt='High';
     else 
         txt='Very High!';
+    
     return value+' '+txt;
 }
 
@@ -168,8 +169,8 @@ var geo_trigger = function(value){
     return (text === '' ? 'auto update' : text);
 }
 
-var dualSpeed(value) {
-    return (typeof value === 'number' ? (value+'km/h / '+ (value * 0.62).toFixed(2)+'mp/h') : '')
+var dualSpeed = function(value) {
+    return (typeof value === 'number' ? (value+ 'km/h / '+ (value * 0.62).toFixed(2)+'mp/h') : '')
 }
 
 var pct = function(value) {
