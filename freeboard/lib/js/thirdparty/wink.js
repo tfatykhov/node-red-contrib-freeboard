@@ -170,7 +170,7 @@ var geo_trigger = function(value){
 }
 
 var dualSpeed = function(value) {
-    return (typeof value === 'number' ? (value+ 'km/h / '+ (value * 0.62).toFixed(2)+'mp/h') : '')
+    return (typeof value === 'number' ? (value+ ' km/h / '+ (value * 0.62).toFixed(2)+' mp/h') : '')
 }
 
 var pct = function(value) {
