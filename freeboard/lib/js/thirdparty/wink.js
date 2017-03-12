@@ -105,7 +105,8 @@ var on_text = function(data, property) {
             , windDirection   : value
             , windGust        : value
             , sustainedWindSpeed: value
-            , rainRate        : value 
+            , rainRate        : value
+            , rainDaily       : value 
             , battery         : pct(value)
             , brightness      : pct(value)
             , co_severity     : pct(value)
@@ -136,8 +137,19 @@ var timeConverter = function (UNIX_timestamp){
 
 var getUvIndex = function(val){
     var value;
+    var txt;
     value=parseInt(val);
-    return value+' '+(value <=2 ? 'Minimal' : value <=4 ? 'Low' : value<=6 ? 'Moderate' : value<=9 ? 'High!' : 'Very High!');
+    if (value <=2)
+        txt='Minimal';
+    else if (value <=4)
+        txt='Low';
+    else if (value <=6)
+        txt='Moderate';
+    else if value <=9
+        txt='High';
+    else 
+        txt='Very High!';
+    return value+' '+txt;
 }
 
 var geo_trigger = function(value){
@@ -154,6 +166,10 @@ var geo_trigger = function(value){
         none: 'auto update'
     }[value]
     return (text === '' ? 'auto update' : text);
+}
+
+var dualSpeed(value) {
+    return (typeof value === 'number' ? (value+'km/h / '+ (value * 0.62).toFixed(2)+'mp/h') : '')
 }
 
 var pct = function(value) {
