@@ -145,7 +145,7 @@ var getUvIndex = function(val){
         txt='Low';
     else if (value <=6)
         txt='Moderate';
-    else if value <=9
+    else if (value <=9)
         txt='High';
     else 
         txt='Very High!';
