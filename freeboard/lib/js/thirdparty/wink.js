@@ -101,7 +101,7 @@ var on_text = function(data, property) {
             , distanceFromHome: value
             , trigger         : geo_trigger(value)
             , lastUpdated     : timeConverter(value)
-            , uvindex         : getUvIndex(value)
+            , uvindex         : value
             , windDirection   : value
             , windGust        : dualSpeed(value)
             , sustainedWindSpeed: dualSpeed(value)
