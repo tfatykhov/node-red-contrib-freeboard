@@ -103,8 +103,8 @@ var on_text = function(data, property) {
             , lastUpdated     : timeConverter(value)
             , uvindex         : getUvIndex(value)
             , windDirection   : value
-            , windGust        : value
-            , sustainedWindSpeed: value
+            , windGust        : dualSpeed(value)
+            , sustainedWindSpeed: dualSpeed(value)
             , rainRate        : value
             , rainDaily       : value 
             , battery         : pct(value)
