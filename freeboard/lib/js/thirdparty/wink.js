@@ -115,6 +115,8 @@ var on_text = function(data, property) {
             , remaining       : pct(value)
             , temperature     : dual_temp(value)
             , mode	      : tstat_mode(data,value)
+            , energy      : value+' kWh'
+            , power       : value+' W'
 
             }[property]
     if (text === '') text = 'OK'
