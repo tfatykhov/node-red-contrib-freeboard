@@ -111,6 +111,7 @@ var on_text = function(data, property) {
             , brightness      : pct(value)
             , co_severity     : pct(value)
             , humidity        : pct(value)
+            , soilMoisture    : pct(value)
             , smoke_severity  : pct(value)
             , remaining       : pct(value)
             , temperature     : dual_temp(value)
@@ -313,6 +314,7 @@ var style_element = function(data, property) {
             , brightness      : false
             , co_severity     : (value > 0) && red
             , humidity        : false
+            , soilMoisture    : false
             , smoke_severity  : (value > 0) && red
 	        , mode	      : (value=='cool_only' ? blue : red)
             , temperature     : false
