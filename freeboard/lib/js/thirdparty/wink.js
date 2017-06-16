@@ -5,9 +5,37 @@
 // jshint asi: true
 
 var wink = { indicator: {} }
-
+var lyric = { indicator: {} }
 // data, e.g., datasources["WinKData"]["light_bulb"]["Kitchen"]
 
+
+var lyric_tstat_mode = function (data, value) {
+    //    return value
+    if (data.users_away) return 'Away mode'
+    return (value == 'Cool' ? 'cool to: ' + (data.cool_set_point)+"\xB0" : value == 'Heat' ? 'heat to: ' + (data.heat_set_point)+"\xB0" : value)
+}
+
+lyric.indicator.on_text = function(data, property) {
+    return lyric_on_text(data, property)
+}
+
+var lyric_on_text = function(data, property) {
+    var text, value
+
+    if (!data) return ''
+    text =  {thermostats     : (data.mode)
+            }[data.object_type] || 'ON'
+	
+    if (typeof property === 'undefined') return text
+    if ((typeof data[property] === 'undefined') || (data[property] === null )) return ''
+    value = data[property]
+    text =  {temperature    : (value +"\xB0 "+data.units)
+            ,powered	    : lyric_tstat_mode(data,value)
+	}[property]
+    if (text === '') text = 'OK'
+
+    return text
+}
 
 
 
@@ -262,6 +290,9 @@ var style_element = function(data, property) {
       , moderate = '#FFFF00'
       , warning = '#FF8000'
       , danger = '#FF0000'
+      , cool = '#3232FF'
+      , heat = '#F7553A'
+      , off = '#000000'
     
     if (!data) return ''
     if ((typeof data.connection !== 'undefined') && (!data.connection)) return { color: red, shape: 'triangle' }
@@ -276,7 +307,7 @@ var style_element = function(data, property) {
             , locks           : (data.locked           ? blue  : yellow)
             , valves          : (data.opened           ? blue :  yellow)
             , shades          : (data.position === 0.0 ? blue  : data.position === null ? yellow : green)
-            , thermostats     : ({ cool_only: blue, heat_only: red }[data.mode] || green)
+            , thermostats     : ({ cool_only: blue, heat_only: red, Cool: cool, Heat: heat, Off: off}[data.mode] || green)
             , air_conditioners: (data.powered ? blue : green)
             , propane_tanks   : (data.remaining == 0 ? red : data.remaining == 1 ? blue : data.remaining > 0.66 ? green : data.remaining > 0.33 ? yellow : red)
             , piggy_banks     : '#'+data.nose_color
@@ -316,7 +347,8 @@ var style_element = function(data, property) {
             , humidity        : false
             , soilMoisture    : false
             , smoke_severity  : (value > 0) && red
-	        , mode	      : (value=='cool_only' ? blue : red)
+	    , mode	      : (value == 'cool_only' ? blue : value == 'heat_only' ? red : value == 'Cool' ? cool : value == 'Heat' ? heat : off)
+	    , powered	      : (value == 'Cool' ? cool : value == 'Heat' ? heat : off)
             , temperature     : false
             }[property] || blue
 //    if ((color != blue) && (color != green)) shape = 'triangle'
